@@ -356,4 +356,15 @@ public class StreamPreStateProcessor implements PreStateProcessor, Snapshotable 
     public String getElementId() {
         return elementId;
     }
+
+    @Override
+    public String toString() {
+        return "{\"StreamPreStateProcessor\":{" +
+                "\"stateId\":" + stateId +
+                ", \"thisStatePostProcessor\":" + thisStatePostProcessor +
+                ", \"thisLastPostProcessor\":" + thisLastProcessor.getStateId() +
+                ", \"nextProcessor\":" + nextProcessor +
+                "}}";
+    }
+
 }

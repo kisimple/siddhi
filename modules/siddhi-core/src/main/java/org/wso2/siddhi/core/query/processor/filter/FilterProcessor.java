@@ -80,4 +80,12 @@ public class FilterProcessor implements Processor {
         }
     }
 
+    @Override
+    public String toString() {
+        return "{\"FilterProcessor\":{" +
+                "\"conditionExecutor\":\"" + conditionExecutor.getClass().getSimpleName() + '\"' +
+                ", \"nextProcessor\":" + next +
+                "}}";
+    }
+
 }

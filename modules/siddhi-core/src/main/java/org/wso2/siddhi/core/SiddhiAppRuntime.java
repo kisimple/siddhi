@@ -693,4 +693,16 @@ public class SiddhiAppRuntime {
             log.debug("Siddhi App '" + getName() + "' statistics reporting not changed!");
         }
     }
+
+    public void printStreamJunctions() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("{");
+        for (Map.Entry<String, StreamJunction> entry : streamJunctionMap.entrySet()) {
+            sb.append('\"').append(entry.getKey()).append("\":").append(entry.getValue()).append(',');
+            //System.out.println("{\"" + entry.getKey() + "\":" + entry.getValue() + "}");
+        }
+        sb.replace(sb.length()-1, sb.length(), "}");
+        System.out.println(sb.toString());
+    }
+
 }

@@ -377,4 +377,12 @@ public class StreamJunction implements EventBufferHolder {
             return streamJunction.getStreamId();
         }
     }
+
+    @Override
+    public String toString() {
+        return "{\"StreamJunction\":{" +
+                "\"receivers\":" + receivers +
+                "}}";
+    }
+
 }

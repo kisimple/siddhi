@@ -166,4 +166,20 @@ public class StreamPostStateProcessor implements PostStateProcessor {
     public void setCallbackPreStateProcessor(CountPreStateProcessor callbackPreStateProcessor) {
         this.callbackPreStateProcessor = callbackPreStateProcessor;
     }
+
+    @Override
+    public String toString() {
+        int nextStatePreProcessorId = nextStatePreProcessor != null ?
+                nextStatePreProcessor.getStateId() : -1;
+        int nextEveryStatePreProcessorId = nextEveryStatePreProcessor != null ?
+                nextEveryStatePreProcessor.getStateId() : -1;
+        return "{\"StreamPostStateProcessor\":{" +
+                "\"stateId\":" + stateId +
+                ", \"nextStatePreProcessor\":" + nextStatePreProcessorId +
+                ", \"nextEveryStatePreProcessor\":" + nextEveryStatePreProcessorId +
+                ", \"thisStatePreProcessor\":" + thisStatePreProcessor.getStateId() +
+                ", \"nextProcessor\":" + nextProcessor +
+                "}}";
+    }
+
 }

@@ -21,7 +21,11 @@ import org.wso2.siddhi.core.config.SiddhiAppContext;
 import org.wso2.siddhi.core.event.ComplexEvent;
 import org.wso2.siddhi.core.event.Event;
 import org.wso2.siddhi.core.query.input.SingleProcessStreamReceiver;
+import org.wso2.siddhi.core.query.input.stream.state.PreStateProcessor;
 import org.wso2.siddhi.core.util.statistics.LatencyTracker;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * {@link org.wso2.siddhi.core.stream.StreamJunction.Receiver} implementation to receive events into pattern queries
@@ -68,4 +72,18 @@ public class PatternSingleProcessStreamReceiver extends SingleProcessStreamRecei
     public void receive(long timestamp, Object[] data) {
         super.receive(timestamp, data);
     }
+
+    @Override
+    public String toString() {
+        List<Integer> stateProcessorIds = new ArrayList<>(stateProcessorsSize);
+        for (PreStateProcessor stateProcessor : stateProcessors) {
+            stateProcessorIds.add(stateProcessor.getStateId());
+        }
+        return "{\"PatternSingleProcessStreamReceiver\":{" +
+                "\"streamId\":\"" + streamId + '\"' +
+                ", \"preStateProcessors\":" + stateProcessorIds +
+                ", \"nextProcessor\":" + next +
+                "}}";
+    }
+
 }

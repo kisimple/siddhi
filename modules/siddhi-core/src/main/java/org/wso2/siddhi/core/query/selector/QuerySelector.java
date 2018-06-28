@@ -462,4 +462,11 @@ public class QuerySelector implements Processor {
         }
     }
 
+    @Override
+    public String toString() {
+        return "{\"QuerySelector\":{" +
+                "\"id\":\"" + id + '\"' +
+                "}}";
+    }
+
 }
